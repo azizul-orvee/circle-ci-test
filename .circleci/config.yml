@@ -22,7 +22,10 @@ jobs:
   #     - checkout
 
 
+
+
 workflows:
-  jobs:
-    - test
-    - build
+  s3-example:
+    jobs:
+      - test
+      - build
