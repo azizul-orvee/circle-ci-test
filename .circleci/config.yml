@@ -1,0 +1,28 @@
+version: 2.1
+
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:18 # Use the desired Python version
+    steps:
+      - checkout
+
+  test:
+    docker:
+      - image: node:18
+    steps: 
+      - checkout
+
+
+  # deploy:
+  #   docker:
+  #     - image: python:3.11
+  #   steps: 
+  #     - checkout
+
+
+workflows:
+  jobs:
+    - test
+    - build
