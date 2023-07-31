@@ -4,9 +4,11 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:18 # Use the desired Python version
+      - image: node:18 # Use the desired Python version
     steps:
       - checkout
+      - run: npm i
+      - run: npm run build
 
   test:
     docker:
@@ -28,4 +30,7 @@ workflows:
   s3-example:
     jobs:
       - test
-      - build
+      - build:
+          requires:
+            - test
+
